@@ -31,6 +31,9 @@ extern "C" {
 #define ILI9341_RST       CONFIG_LV_DISP_PIN_RST
 #define ILI9341_INVERT_COLORS CONFIG_LV_INVERT_COLORS
 
+#define LV_HOR_RES_MAX 320
+#define LV_VER_RES_MAX 240
+
 /**********************
  *      TYPEDEFS
  **********************/
