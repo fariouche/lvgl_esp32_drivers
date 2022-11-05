@@ -12,6 +12,7 @@
 
 #include "lvgl_tft/disp_spi.h"
 #include "lvgl_touch/tp_spi.h"
+#include "lvgl_keypad/gamepad_driver.h"
 
 #include "lvgl_spi_conf.h"
 
@@ -136,6 +137,10 @@ void lvgl_driver_init(void)
     #error "No protocol defined for touch controller"
     #endif
 #else
+#endif
+
+#if CONFIG_LV_GAMEPAD_CONTROLLER != LV_GAMEPAD_NONE
+    gamepad_driver_init();
 #endif
 }
 

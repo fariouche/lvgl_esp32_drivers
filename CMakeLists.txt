@@ -80,6 +80,18 @@ if(CONFIG_LV_TOUCH_CONTROLLER)
     endif()
 endif()
 
+# Add gamepad driver to compilation only if it is selected in menuconfig
+if(CONFIG_LV_GAMEPAD_CONTROLLER)
+    list(APPEND SOURCES "lvgl_keypad/gamepad_driver.c")
+    list(APPEND LVGL_INCLUDE_DIRS lvgl_keypad)
+
+    # Include only the source file of the selected
+    # gamepad controller.
+    if(CONFIG_LV_GAMEPAD_M5STACK_FACE)
+        list(APPEND SOURCES "lvgl_keypad/m5stack_face_gamepad.c")
+    endif()
+endif()
+
 if(CONFIG_LV_I2C)
     list(APPEND SOURCES "lvgl_i2c/i2c_manager.c")
 endif()

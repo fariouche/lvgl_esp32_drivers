@@ -1,0 +1,24 @@
+menu "LVGL Gamepad controller"
+
+    config LV_GAMEPAD_CONTROLLER
+        int
+        default 0 if LV_GAMEPAD_NONE
+        default 1 if LV_GAMEPAD_M5STACK_FACE
+
+    choice
+        prompt "Select a gamepad controller model."
+        default LV_GAMEPAD_NONE
+        help
+            Select the controller for your gamepad.
+
+        config LV_GAMEPAD_NONE
+            bool "None"
+        config LV_GAMEPAD_M5STACK_FACE
+            bool "M5Stack Core Face gamepad"
+            select LV_I2C
+    endchoice
+
+endmenu
+
+
+

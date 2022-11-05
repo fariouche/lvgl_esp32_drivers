@@ -260,7 +260,8 @@ esp_err_t I2C_FN(_write)(i2c_port_t port, uint16_t addr, uint32_t reg, const uin
 		if (!(reg & I2C_NO_REG)) {
 			i2c_send_register(cmd, reg);
 		}
-		i2c_master_write(cmd, (uint8_t *)buffer, size, ACK_CHECK_EN);
+		if(size)
+		    i2c_master_write(cmd, (uint8_t *)buffer, size, ACK_CHECK_EN);
 		i2c_master_stop(cmd);
 		result = i2c_master_cmd_begin( port, cmd, timeout);
 		i2c_cmd_link_delete(cmd);

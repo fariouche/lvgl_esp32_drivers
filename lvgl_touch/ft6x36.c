@@ -39,7 +39,7 @@ QueueHandle_t ft6x36_touch_queue_handle;
 #endif
 
 static esp_err_t ft6x06_i2c_read8(uint8_t slave_addr, uint8_t register_addr, uint8_t *data_buf) {
-    return lvgl_i2c_read(CONFIG_LV_I2C_TOUCH_PORT, slave_addr, register_addr, data_buf, 1);
+    return i2c_manager_read(CONFIG_LV_I2C_TOUCH_PORT, slave_addr, register_addr, data_buf, 1);
 }
 
 /**
@@ -112,7 +112,7 @@ bool ft6x36_read(lv_indev_drv_t *drv, lv_indev_data_t *data) {
     }
     uint8_t data_buf[5];        // 1 byte status, 2 bytes X, 2 bytes Y
 
-    esp_err_t ret = lvgl_i2c_read(CONFIG_LV_I2C_TOUCH_PORT, current_dev_addr, FT6X36_TD_STAT_REG, &data_buf[0], 5);
+    esp_err_t ret = i2c_manager_read(CONFIG_LV_I2C_TOUCH_PORT, current_dev_addr, FT6X36_TD_STAT_REG, &data_buf[0], 5);
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Error talking to touch IC: %s", esp_err_to_name(ret));
     }

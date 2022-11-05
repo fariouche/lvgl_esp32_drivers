@@ -16,7 +16,7 @@ extern "C" {
 
 */
 
-#define I2C_OEM lvgl
+//#define I2C_OEM lvgl
 
 
 // Only here to get the I2C_NUM_0 and I2C_NUM_1 defines.

@@ -227,7 +227,7 @@ static void st7735s_set_orientation(uint8_t orientation)
 
     static void axp192_write_byte(uint8_t addr, uint8_t data)
     {
-        err = lvgl_i2c_write(CONFIG_LV_I2C_DISPLAY_PORT, AXP192_I2C_ADDRESS, addr, &data, 1);
+        err = i2c_manager_write(CONFIG_LV_I2C_DISPLAY_PORT, AXP192_I2C_ADDRESS, addr, &data, 1);
         if (ret != ESP_OK) {
             ESP_LOGE(TAG, "AXP192 send failed. code: 0x%.2X", ret);
         }
