@@ -100,7 +100,7 @@ static uint8_t m5stack_gamepad_driver_read_internal(void)
 static void input_task(void *arg)
 {
     input_task_is_running = true;
-    printf("m4stack gamepad input task started\n");
+    printf("m5stack gamepad input task started\n");
     while(input_task_is_running)
     {
         xSemaphoreTake(xSemaphore, portMAX_DELAY);
